@@ -123,7 +123,7 @@ async fn can_get_predicate_address() {
 
     // Setup Predciate
     let hex_predicate_address: &str =
-        "0xb91f2b368b7784611ca0a4df5530c5eea31d01f0d16d393aa000c00c0d7125ca";
+        "0x603856cc6c3d2d5f2d7460b2811fe3a3bf1554a4e7e70c411a9da94ea29ad929";
     let predicate_address =
         Address::from_str(hex_predicate_address).expect("failed to create Address from string");
     let predicate_bech32_address = Bech32Address::from(predicate_address);
@@ -135,6 +135,10 @@ async fn can_get_predicate_address() {
             .unwrap()
             .with_provider(first_wallet.try_provider().unwrap().clone())
             .with_data(predicate_data);
+
+    // If this test fails, it can be the predicate address
+    // Uncomment the next line, get the predicate address and update above.
+    //dbg!(&predicate);
 
     // Next, we lock some assets in this predicate using the first wallet:
     // First wallet transfers amount to predicate.
